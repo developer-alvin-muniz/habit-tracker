@@ -1,0 +1,13 @@
+<p>Did you read for 10 minutes today?</p>
+<span>{{this.selected | json}}</span>
+<span>{{this.projectRecords | keyvalue | json}}</span>
+<button mat-raised-button (click)="completedMetric(true)" color="primary">Yes
+</button>
+<button mat-raised-button (click)="completedMetric(false)" color="warning">No
+</button>
+
+<mat-card style="width: 600px" class="demo-inline-calendar-card">
+  <mat-calendar class="calendar" [(selected)]="selected" [dateClass]="dateClass"
+                (click)="display($event)"></mat-calendar>
+
+</mat-card>
