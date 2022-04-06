@@ -5,21 +5,30 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from "./lib/material.module";
-import { ProjectDetailComponent } from './project-detail/project-detail.component';
+import { HabitDetailComponent } from './habit-detail/habit-detail.component';
 import { HomeComponent } from './home/home.component';
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import { CalendarComponent } from './habit-detail/calendar/calendar.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {JwtInterceptor} from "./jwt.interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectDetailComponent,
-    HomeComponent
+    HabitDetailComponent,
+    HomeComponent,
+    CalendarComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
@@ -28,9 +37,16 @@ import {MatInputModule} from "@angular/material/input";
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useExisting: JwtInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

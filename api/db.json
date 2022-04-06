@@ -12,5 +12,42 @@
       "coach": "Zinedine Zidane",
       "description": "The worst football team in the world!"
     }
+  ],
+  "dates": [
+    {
+      "date": "2022-04-06T05:00:00.000Z",
+      "completed": true,
+      "id": 1
+    },
+    {
+      "date": "2022-04-05T05:00:00.000Z",
+      "completed": true,
+      "id": 2
+    },
+    {
+      "date": "2022-04-08T05:00:00.000Z",
+      "completed": false,
+      "id": 3
+    },
+    {
+      "date": "2022-04-07T05:00:00.000Z",
+      "completed": true,
+      "id": 4
+    },
+    {
+      "date": "2022-04-07T05:00:00.000Z",
+      "completed": true,
+      "id": 5
+    },
+    {
+      "date": "2022-04-07T05:00:00.000Z",
+      "completed": false,
+      "id": 6
+    },
+    {
+      "date": "2016-02-03T06:00:00.000Z",
+      "completed": true,
+      "id": 7
+    }
   ]
 }

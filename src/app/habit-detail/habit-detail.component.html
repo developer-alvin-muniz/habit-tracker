@@ -1,0 +1,12 @@
+<p>Did you read for 10 minutes today?</p>
+<button mat-raised-button
+        [disabled]="!selected"(click)="completedMetric(true)"
+        color="primary">Yes
+</button>
+<button mat-raised-button
+        [disabled]="!selected"
+        (click)="completedMetric(false)" color="warning">No
+</button>
+
+<app-calendar [projectRecords]="projectRecords"
+              (emitSelectedDate)="setSelectedDate($event)"></app-calendar>
