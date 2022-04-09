@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <span>Habit Tracker</span>
+</mat-toolbar>
+
+
+<div *ngIf="habits$ | async as habits" style="display: flex; flex-direction:
+column; padding: 0 25%;">
+  <h2>Todays Date: {{getCurrentDate() | date}}</h2>
+<mat-card style="display: flex; justify-content: space-between; width: 100%;
+height: 35px;
+margin-top: 10px;margin-bottom:
+10px; color: white;
+background-color: rebeccapurple;" *ngFor="let habit of habits">{{habit.name}}
+  <div>
+    <button (click)="postCompletedHabit(true, habit)">Yes</button>
+    <button (click)="postCompletedHabit(false, habit)">No</button>
+  </div>
+</mat-card>
+</div>
+<!--<mat-selection-list style="padding: 0px 275px" #shoes [multiple]="false">-->
+<!--  <mat-list-option *ngFor="let habit of habits" [value]="habit">-->
+<!--    {{habit}}-->
+<!--  </mat-list-option>-->
+<!--</mat-selection-list>-->

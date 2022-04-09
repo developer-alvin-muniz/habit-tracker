@@ -17,6 +17,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {JwtInterceptor} from "./jwt.interceptor";
+import { HabitLibraryComponent } from './habit-library/habit-library.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {JwtInterceptor} from "./jwt.interceptor";
     HomeComponent,
     CalendarComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HabitLibraryComponent
   ],
   imports: [
     ReactiveFormsModule,

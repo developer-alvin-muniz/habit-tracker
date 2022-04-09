@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../models/User";
 import {UserService} from "../shared/user.service";
 import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,10 @@ export class RegisterComponent implements OnInit {
   passwordCtrl: FormControl;
 
 
-  constructor(fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(fb: FormBuilder,
+              private userService: UserService,
+              private router: Router,
+              private snackBar: MatSnackBar) {
     this.usernameCtrl = fb.control('',Validators.required);
     this.passwordCtrl = fb.control('',Validators.required);
 
@@ -34,13 +38,20 @@ export class RegisterComponent implements OnInit {
   registerUser() {
     this.userService.register(this.usernameCtrl.value, this.passwordCtrl.value).subscribe(
       response => {
-        this.router.navigate(['/login']);
+        this.router.navigateByUrl('login');
         console.log('USER IS SUCCESSFULLY REGISTERED');
       },
       () => {
         console.log('USER IS NOT REGISTERED');
+      },
+      () => {
+          this.openSnackBar('Registration Successful', 'X');
       }
     )
+  }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action);
   }
 
 }

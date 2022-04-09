@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'http://localhost:8080'
+  apiEndpoint: 'http://localhost:8080',
+  mockApiEndpoint: 'http://localhost:3000'
 };
 
 /*

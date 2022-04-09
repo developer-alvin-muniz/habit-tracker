@@ -1,13 +1,6 @@
-export class HabitRecord {
+export interface HabitRecord {
   id: number;
+  habitId: number;
   date: Date;
   completed: boolean;
-
-  constructor(id: number, date: Date, completed:boolean) {
-    this.id = id;
-    this.date = date;
-    this.completed = completed;
-  }
-
-
 }
