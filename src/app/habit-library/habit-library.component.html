@@ -1,24 +1,36 @@
-<mat-toolbar color="primary">
+<mat-toolbar style="display:flex; justify-content: space-between"
+             color="primary">
   <span>Habit Tracker</span>
+
+  <div>
+    <form (ngSubmit)="saveHabit()" #newHabitForm="ngForm">
+      <label>Add New Habit</label>
+      <input required name="habitName" [(ngModel)]="newHabit"
+             style="width:195px; background-color: white;"
+             #habitName="ngModel"
+             matInput>
+      <button type="submit" [disabled]="newHabitForm.invalid">Save</button>
+      <span>
+          <a (click)="logout($event)" class="nav-item nav-link" role="button">
+            <span class="fa fa-power-off">LOG OUT</span>
+          </a>
+        </span>
+    </form>
+  </div>
 </mat-toolbar>
 
 
 <div *ngIf="habits$ | async as habits" style="display: flex; flex-direction:
 column; padding: 0 25%;">
   <h2>Todays Date: {{getCurrentDate() | date}}</h2>
-<mat-card style="display: flex; justify-content: space-between; width: 100%;
+  <mat-card style="display: flex; justify-content: space-between; width: 100%;
 height: 35px;
 margin-top: 10px;margin-bottom:
 10px; color: white;
 background-color: rebeccapurple;" *ngFor="let habit of habits">{{habit.name}}
-  <div>
-    <button (click)="postCompletedHabit(true, habit)">Yes</button>
-    <button (click)="postCompletedHabit(false, habit)">No</button>
-  </div>
-</mat-card>
+    <div>
+      <button (click)="postCompletedHabit(true, habit)">Yes</button>
+      <button (click)="postCompletedHabit(false, habit)">No</button>
+    </div>
+  </mat-card>
 </div>
-<!--<mat-selection-list style="padding: 0px 275px" #shoes [multiple]="false">-->
-<!--  <mat-list-option *ngFor="let habit of habits" [value]="habit">-->
-<!--    {{habit}}-->
-<!--  </mat-list-option>-->
-<!--</mat-selection-list>-->

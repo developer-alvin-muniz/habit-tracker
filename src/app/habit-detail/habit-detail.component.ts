@@ -25,6 +25,7 @@ export class HabitDetailComponent implements OnInit {
 
     this.routes.data.subscribe(
       (response: any) => {
+        console.log(response)
         this.projectRecords = response.projectRecords;
       }
     )

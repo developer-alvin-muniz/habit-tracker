@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
           };
           this.userService.storeLoggedInUser(currentUser);
           this.userService.userEvents.next(currentUser);
-          this.router.navigate(['/habit-detail']);
+          this.router.navigate(['/habit-library']);
         },
         error => {
         console.log('no good')

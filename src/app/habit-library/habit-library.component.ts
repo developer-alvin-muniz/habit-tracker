@@ -1,8 +1,16 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {catchError, EMPTY, Observable} from "rxjs";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
+import {catchError, EMPTY, Observable, Subscription} from "rxjs";
 import {HabitModel} from "../models/habit.model";
 import {HabitService} from "../shared/habit.service";
 import {HabitRecord} from "../models/HabitRecord";
+import {Router} from "@angular/router";
+import {User} from "../models/User";
+import {UserService} from "../shared/user.service";
 
 @Component({
   selector: 'app-habit-library',
@@ -10,10 +18,15 @@ import {HabitRecord} from "../models/HabitRecord";
   styleUrls: ['./habit-library.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HabitLibraryComponent {
+export class HabitLibraryComponent implements OnInit, OnDestroy{
 
   // selectedHabit?: HabitModel;
   selectedDate?: Date;
+
+  newHabit: string | undefined;
+
+  user: User | null = null;
+  userEventsSubscription: Subscription | null = null;
 
 
   habits$ = this.habitService.habits$
@@ -23,14 +36,41 @@ export class HabitLibraryComponent {
       })
     )
 
-  constructor(private habitService: HabitService) { }
+  constructor(private userService:UserService, private habitService: HabitService, private router: Router) { }
 
-  // ngOnInit(): void {
-  //   this.habits$ = this.habitService.habits$;
-  // }
+  ngOnInit() {
+    this.userEventsSubscription = this.userService.userEvents.subscribe(user => (this.user = user));
+  }
+
+  ngOnDestroy(): void {
+    this.userEventsSubscription?.unsubscribe();
+  }
 
   getCurrentDate() {
     return new Date();
+  }
+
+  saveHabit() {
+    const savedHabit = {
+      name: this.newHabit
+    } as HabitModel
+
+    this.habitService.saveHabit(savedHabit).subscribe(
+      () => {
+        console.log('habit saved')
+      },
+      ()=> {
+        console.log('habit not saved')
+      }, ()=>{
+        console.log('AFTER SAVED HABIT')
+        this.habits$ = this.habitService.habits$
+          .pipe(
+            catchError(err => {
+              return EMPTY;
+            })
+          )
+      }
+    )
   }
 
   postCompletedHabit(completed: boolean, habit: HabitModel) {
@@ -41,7 +81,19 @@ export class HabitLibraryComponent {
     } as HabitRecord;
 
     this.habitService.postCompletedHabit(completedRecord).subscribe(
-      result => {console.log('saved habit record', result)}
+      result => {console.log('saved habit record', result)},
+      error => {},
+      ()=> {
+        this.router.navigate(['/habit-detail']);
+      }
     )
+
+
+  }
+
+  logout($event: Event) {
+    $event.preventDefault();
+    this.userService.logout();
+    this.router.navigate(['/login']);
   }
 }

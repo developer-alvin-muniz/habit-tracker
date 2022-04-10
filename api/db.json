@@ -25,46 +25,22 @@
   ],
   "habitRecord": [
     {
-      "completed": true,
+      "completed": false,
       "habitId": 1,
-      "date": "2022-04-09T14:42:32.176Z",
+      "date": "2022-04-10T15:49:53.819Z",
       "id": 1
     },
     {
       "completed": true,
-      "habitId": 2,
-      "date": "2022-04-09T14:42:45.149Z",
+      "habitId": 1,
+      "date": "2022-04-10T23:38:22.612Z",
       "id": 2
     },
     {
-      "completed": true,
+      "completed": false,
       "habitId": 2,
-      "date": "2022-04-09T14:42:49.180Z",
+      "date": "2022-04-10T23:39:41.712Z",
       "id": 3
-    },
-    {
-      "completed": true,
-      "habitId": 1,
-      "date": "2022-04-09T14:43:57.956Z",
-      "id": 4
-    },
-    {
-      "completed": false,
-      "habitId": 2,
-      "date": "2022-04-09T14:44:00.234Z",
-      "id": 5
-    },
-    {
-      "completed": false,
-      "habitId": 1,
-      "date": "2022-04-09T14:44:02.451Z",
-      "id": 6
-    },
-    {
-      "completed": true,
-      "habitId": 2,
-      "date": "2022-04-09T14:44:03.775Z",
-      "id": 7
     }
   ],
   "dates": [

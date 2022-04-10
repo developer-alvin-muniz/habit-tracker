@@ -12,7 +12,7 @@ import {HabitModel} from "../models/habit.model";
 })
 export class HabitService implements Resolve<any> {
 
-  habits$ = this.http.get<HabitModel[]>(environment.mockApiEndpoint + '/habits')
+  habits$ = this.http.get<HabitModel[]>(environment.apiEndpoint + '/habits')
     .pipe(
       tap(data => console.log(JSON.stringify(data))),
       catchError(error => {
@@ -26,6 +26,11 @@ export class HabitService implements Resolve<any> {
   projectRecordsList?: HabitRecord[];
 
   constructor(private http: HttpClient) { }
+
+  resolve() {
+    return this.getAllCompletedHabits();
+  }
+
 
   getAll():Observable<any> {
     return this.http.get(environment.mockApiEndpoint + '/teams');
@@ -43,9 +48,6 @@ export class HabitService implements Resolve<any> {
       );
   }
 
-  resolve() {
-    return this.fetchAllDates();
-  }
 
   fetchAllDates(): Observable<HabitRecord[]> {
     return this.http.get<HabitRecord[]>(environment.mockApiEndpoint + '/dates');
@@ -54,6 +56,14 @@ export class HabitService implements Resolve<any> {
   postCompletedHabit(habitRecord: HabitRecord): Observable<HabitRecord> {
     return this.http.post<HabitRecord>(environment.mockApiEndpoint + '/habitRecord', habitRecord)
       }
+
+  saveHabit(habit: HabitModel): Observable<HabitModel> {
+    return this.http.post<HabitModel>(environment.apiEndpoint + '/habits/save', habit);
+  }
+
+  getAllCompletedHabits(): Observable<HabitRecord[]> {
+    return this.http.get<HabitRecord[]>(environment.mockApiEndpoint + '/habitRecord');
+  }
 
   postDates(projectRecord: HabitRecord):Observable<HabitRecord> {
     return this.http.post<HabitRecord>(environment.mockApiEndpoint + '/dates', projectRecord);
