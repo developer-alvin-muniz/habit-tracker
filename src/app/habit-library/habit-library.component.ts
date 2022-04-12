@@ -84,7 +84,7 @@ export class HabitLibraryComponent implements OnInit, OnDestroy{
       result => {console.log('saved habit record', result)},
       error => {},
       ()=> {
-        this.router.navigate(['/habit-detail']);
+        this.router.navigate(['/habit-detail/'+habit.id] );
       }
     )
 

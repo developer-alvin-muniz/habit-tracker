@@ -9,7 +9,7 @@ import {HabitLibraryComponent} from "./habit-library/habit-library.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'habit-detail', component: HabitDetailComponent,
+  { path: 'habit-detail/:habitId', component: HabitDetailComponent,
   resolve: {
     projectRecords: HabitService
   }},

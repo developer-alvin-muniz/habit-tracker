@@ -52,7 +52,7 @@ export class CalendarComponent implements OnInit, OnChanges {
       }) as HabitRecord[];
 
       if(filteredRecords?.length > 0) {
-        return filteredRecords[0]?.completed ? 'missed' : 'achieved';
+        return filteredRecords[0]?.completed ? 'achieved' : 'missed';
       }
 
       return '';

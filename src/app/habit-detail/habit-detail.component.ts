@@ -22,11 +22,14 @@ export class HabitDetailComponent implements OnInit {
   // TODO - Group saelected dates in an array I should have available the
   //  current month display as well as an array of dates displayed
   ngOnInit(): void {
-
+    const habitId = this.routes.snapshot.paramMap.get('habitId');
     this.routes.data.subscribe(
       (response: any) => {
-        console.log(response)
-        this.projectRecords = response.projectRecords;
+        // this.routes.paramMap.
+        console.log(response, habitId);
+        this.projectRecords = response.projectRecords.filter(
+          (record: HabitRecord) => record.habitId == Number(habitId)
+        );
       }
     )
 

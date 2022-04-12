@@ -25,6 +25,12 @@
   ],
   "habitRecord": [
     {
+      "completed": true,
+      "habitId": 1,
+      "date": "2022-04-12T15:49:53.819Z",
+      "id": 1
+    },
+    {
       "completed": false,
       "habitId": 1,
       "date": "2022-04-10T15:49:53.819Z",
@@ -33,14 +39,50 @@
     {
       "completed": true,
       "habitId": 1,
-      "date": "2022-04-10T23:38:22.612Z",
-      "id": 2
+      "date": "2022-04-14T15:49:53.819Z",
+      "id": 1
+    },
+    {
+      "completed": true,
+      "habitId": 2,
+      "date": "2022-04-13T15:49:53.819Z",
+      "id": 1
     },
     {
       "completed": false,
       "habitId": 2,
-      "date": "2022-04-10T23:39:41.712Z",
+      "date": "2022-04-15T15:49:53.819Z",
+      "id": 1
+    },
+    {
+      "completed": true,
+      "habitId": 2,
+      "date": "2022-04-17T15:49:53.819Z",
+      "id": 1
+    },
+    {
+      "completed": true,
+      "habitId": 1,
+      "date": "2022-04-11T18:26:40.673Z",
+      "id": 2
+    },
+    {
+      "completed": true,
+      "habitId": 1,
+      "date": "2022-04-11T19:12:40.584Z",
       "id": 3
+    },
+    {
+      "completed": true,
+      "habitId": 1,
+      "date": "2022-04-11T19:30:26.822Z",
+      "id": 4
+    },
+    {
+      "completed": false,
+      "habitId": 2,
+      "date": "2022-04-11T19:33:32.837Z",
+      "id": 5
     }
   ],
   "dates": [
