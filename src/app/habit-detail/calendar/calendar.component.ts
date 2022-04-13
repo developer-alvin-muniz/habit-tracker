@@ -14,6 +14,7 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   @Input() projectRecords?: HabitRecord[];
   @Output() emitSelectedDate = new EventEmitter<Date>();
+
   selected: Date | null = null;
   constructor() { }
 
@@ -21,10 +22,8 @@ export class CalendarComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    console.log('on changes')
     this.projectRecords?.forEach(
       record => {
-        console.log('iterating through all dates')
         this.dateClass(record.date, 'month');
       }
     )

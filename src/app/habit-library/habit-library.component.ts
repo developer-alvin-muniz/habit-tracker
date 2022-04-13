@@ -4,7 +4,7 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
-import {catchError, EMPTY, Observable, Subscription} from "rxjs";
+import {catchError, EMPTY, Observable, of, Subscription} from "rxjs";
 import {HabitModel} from "../models/habit.model";
 import {HabitService} from "../shared/habit.service";
 import {HabitRecord} from "../models/HabitRecord";
@@ -95,5 +95,13 @@ export class HabitLibraryComponent implements OnInit, OnDestroy{
     $event.preventDefault();
     this.userService.logout();
     this.router.navigate(['/login']);
+  }
+
+  refreshList(habit: HabitModel) {
+    this.habits$ = this.habitService.habits$.pipe(
+      catchError(err => {
+        return EMPTY;
+      })
+    )
   }
 }

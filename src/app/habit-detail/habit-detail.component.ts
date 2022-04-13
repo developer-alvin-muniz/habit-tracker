@@ -13,7 +13,6 @@ import {HabitService} from "../shared/habit.service";
 export class HabitDetailComponent implements OnInit {
   selected: Date | null = null;
   projectRecords?: HabitRecord[];
-  // mySubscription;
 
   constructor(private routes: ActivatedRoute, private router: Router, private projectService: HabitService) {
 
@@ -26,43 +25,12 @@ export class HabitDetailComponent implements OnInit {
     this.routes.data.subscribe(
       (response: any) => {
         // this.routes.paramMap.
-        console.log(response, habitId);
         this.projectRecords = response.projectRecords.filter(
           (record: HabitRecord) => record.habitId == Number(habitId)
         );
       }
     )
-
-
   }
-
-  completedMetric(metricStatus: boolean) {
-
-    if(this.selected)
-    {
-      const datePipe = new DatePipe('en-US');
-
-      const convertDate = datePipe.transform(this.selected,'MM-dd-YYYY') as string;
-      // this.projectRecords.set((this.selected as Date).toDateString(), metricStatus);
-
-      this.projectService.postDates({
-        date: this.selected,
-        completed: metricStatus
-      } as HabitRecord).subscribe(
-        result => {
-          console.log('success', result)
-        }, () => {},
-        () => {
-          // this.router.navigateByUrl(this.router.url);
-          // window.location.reload();
-        }
-      );
-    }
-
-    console.log('completed metric');
-
-  }
-
 
   setSelectedDate(selectedDate: Date) {
     this.selected = selectedDate;

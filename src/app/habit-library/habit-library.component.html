@@ -2,25 +2,19 @@
              color="primary">
   <span>Habit Tracker</span>
 
-  <div>
-    <form (ngSubmit)="saveHabit()" #newHabitForm="ngForm">
-      <label>Add New Habit</label>
-      <input required name="habitName" [(ngModel)]="newHabit"
-             style="width:195px; background-color: white;"
-             #habitName="ngModel"
-             matInput>
-      <button type="submit" [disabled]="newHabitForm.invalid">Save</button>
-      <span>
+      <app-create-habit-form
+        (emitSavedHabit)= "refreshList($event)"></app-create-habit-form>
           <a (click)="logout($event)" class="nav-item nav-link" role="button">
             <span class="fa fa-power-off">LOG OUT</span>
           </a>
-        </span>
-    </form>
-  </div>
+
 </mat-toolbar>
 
 
-<div *ngIf="habits$ | async as habits" style="display: flex; flex-direction:
+<div  *ngIf="habits$ | async as habits"
+     style="display:
+flex;
+flex-direction:
 column; padding: 0 25%;">
   <h2>Todays Date: {{getCurrentDate() | date}}</h2>
   <mat-card style="display: flex; justify-content: space-between; width: 100%;

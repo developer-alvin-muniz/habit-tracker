@@ -31,26 +31,8 @@ export class HabitService implements Resolve<any> {
     return this.getAllCompletedHabits();
   }
 
-
   getAll():Observable<any> {
     return this.http.get(environment.mockApiEndpoint + '/teams');
-  }
-
-  getAllHabits(): Observable<HabitModel[]> {
-    return this.http.get<HabitModel[]>(environment.mockApiEndpoint + '/habits')
-      .pipe(
-        tap(data => console.log(JSON.stringify(data))),
-        catchError(error => {
-          // TODO set off error message
-          console.log(error);
-          return EMPTY;
-        })
-      );
-  }
-
-
-  fetchAllDates(): Observable<HabitRecord[]> {
-    return this.http.get<HabitRecord[]>(environment.mockApiEndpoint + '/dates');
   }
 
   postCompletedHabit(habitRecord: HabitRecord): Observable<HabitRecord> {

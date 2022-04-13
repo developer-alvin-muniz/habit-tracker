@@ -18,6 +18,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {JwtInterceptor} from "./jwt.interceptor";
 import { HabitLibraryComponent } from './habit-library/habit-library.component';
+import { CreateHabitFormComponent } from './create-habit-form/create-habit-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HabitLibraryComponent } from './habit-library/habit-library.component';
     CalendarComponent,
     LoginComponent,
     RegisterComponent,
-    HabitLibraryComponent
+    HabitLibraryComponent,
+    CreateHabitFormComponent
   ],
   imports: [
     ReactiveFormsModule,
