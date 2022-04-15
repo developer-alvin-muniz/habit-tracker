@@ -8,14 +8,13 @@ import {HabitService} from "../shared/habit.service";
   templateUrl: './create-habit-form.component.html',
   styleUrls: ['./create-habit-form.component.scss']
 })
-export class CreateHabitFormComponent implements OnInit {
+export class CreateHabitFormComponent {
 
   newHabit?: string;
   savedHabit?: HabitModel;
- @Output() emitSavedHabit = new EventEmitter<HabitModel>();
-  constructor(private habitService:HabitService) { }
+  @Output() emitSavedHabit = new EventEmitter<HabitModel>();
 
-  ngOnInit(): void {
+  constructor(private habitService: HabitService) {
   }
 
   saveHabit() {
@@ -24,18 +23,15 @@ export class CreateHabitFormComponent implements OnInit {
     } as HabitModel
 
     this.habitService.saveHabit(savedHabit).subscribe(
-      (result:HabitModel) => {
+      (result: HabitModel) => {
         this.savedHabit = result;
       },
-      ()=> {
-        console.log('habit not saved')
+      () => {
       },
-      ()=>{
-        this.emitSavedHabit.emit(savedHabit)
+      () => {
+        this.emitSavedHabit.emit(this.savedHabit)
 
       }
     )
   }
-
-
 }

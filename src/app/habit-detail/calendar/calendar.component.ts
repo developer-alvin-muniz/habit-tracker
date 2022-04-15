@@ -36,7 +36,6 @@ export class CalendarComponent implements OnInit, OnChanges {
 
   }
 
-
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     // Only highligh dates inside the month view.
     const datePipe = new DatePipe("en-US");

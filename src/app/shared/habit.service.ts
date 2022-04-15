@@ -31,10 +31,6 @@ export class HabitService implements Resolve<any> {
     return this.getAllCompletedHabits();
   }
 
-  getAll():Observable<any> {
-    return this.http.get(environment.mockApiEndpoint + '/teams');
-  }
-
   postCompletedHabit(habitRecord: HabitRecord): Observable<HabitRecord> {
     return this.http.post<HabitRecord>(environment.mockApiEndpoint + '/habitRecord', habitRecord)
       }

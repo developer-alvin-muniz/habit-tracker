@@ -62,13 +62,7 @@ export class HabitLibraryComponent implements OnInit, OnDestroy{
       ()=> {
         console.log('habit not saved')
       }, ()=>{
-        console.log('AFTER SAVED HABIT')
-        this.habits$ = this.habitService.habits$
-          .pipe(
-            catchError(err => {
-              return EMPTY;
-            })
-          )
+
       }
     )
   }

@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HabitDetailComponent } from './habit-detail.component';
 
-fdescribe('ProjectDetailComponent', () => {
+describe('ProjectDetailComponent', () => {
   let component: HabitDetailComponent;
   let fixture: ComponentFixture<HabitDetailComponent>;
 
