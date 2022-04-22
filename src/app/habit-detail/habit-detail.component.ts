@@ -14,7 +14,7 @@ export class HabitDetailComponent implements OnInit {
   selected: Date | null = null;
   projectRecords?: HabitRecord[];
 
-  constructor(private routes: ActivatedRoute, private router: Router, private projectService: HabitService) {
+  constructor(private routes: ActivatedRoute) {
 
   }
 
@@ -22,12 +22,14 @@ export class HabitDetailComponent implements OnInit {
   //  current month display as well as an array of dates displayed
   ngOnInit(): void {
     const habitId = this.routes.snapshot.paramMap.get('habitId');
+    console.log(habitId, 'THIS IS HABIT ID')
     this.routes.data.subscribe(
       (response: any) => {
         // this.routes.paramMap.
         this.projectRecords = response.projectRecords.filter(
           (record: HabitRecord) => record.habitId == Number(habitId)
         );
+        console.log(this.projectRecords)
       }
     )
   }
