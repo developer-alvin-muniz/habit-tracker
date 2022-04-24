@@ -10,7 +10,7 @@ import {HabitRecord} from "../../models/HabitRecord";
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit, OnChanges {
+export class CalendarComponent implements OnChanges {
 
   @Input() projectRecords?: HabitRecord[];
   @Output() emitSelectedDate = new EventEmitter<Date>();
@@ -18,26 +18,21 @@ export class CalendarComponent implements OnInit, OnChanges {
   selected: Date | null = null;
   constructor() { }
 
-  ngOnInit(): void {
-  }
-
   ngOnChanges(): void {
     this.projectRecords?.forEach(
       record => {
         this.dateClass(record.date, 'month');
       }
     )
-
   }
   setSelectedDate = () => {
     if(this.selected) {
       this.emitSelectedDate.emit(this.selected as Date)
     }
-
   }
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-    // Only highligh dates inside the month view.
+    // Only highlight dates inside the month view.
     const datePipe = new DatePipe("en-US");
 
     if (view === 'month') {

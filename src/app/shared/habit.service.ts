@@ -16,8 +16,6 @@ export class HabitService implements Resolve<any> {
     .pipe(
       tap(data => console.log(JSON.stringify(data))),
       catchError(error => {
-        // TODO set off error message
-        console.log(error);
         return EMPTY;
       })
     );
@@ -33,7 +31,7 @@ export class HabitService implements Resolve<any> {
 
   postCompletedHabit(habitRecord: HabitRecord): Observable<HabitRecord> {
     return this.http.post<HabitRecord>(environment.mockApiEndpoint + '/habitRecord', habitRecord)
-      }
+  }
 
   saveHabit(habit: HabitModel): Observable<HabitModel> {
     return this.http.post<HabitModel>(environment.apiEndpoint + '/habits/save', habit);

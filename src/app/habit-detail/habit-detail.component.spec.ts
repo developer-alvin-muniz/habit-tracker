@@ -7,7 +7,7 @@ import {ActivatedRoute, convertToParamMap, Router} from "@angular/router";
 import {of} from "rxjs";
 import {HabitRecord} from "../models/HabitRecord";
 
-fdescribe('ProjectDetailComponent', () => {
+describe('ProjectDetailComponent', () => {
   let component: HabitDetailComponent;
   let fixture: ComponentFixture<HabitDetailComponent>;
 
@@ -47,9 +47,10 @@ fdescribe('ProjectDetailComponent', () => {
   it('should have a button that navigates back to the home page', () => {
     const hostElement = fixture.nativeElement;
     const homePageBtn = hostElement.querySelector('#home-page-btn');
+    expect(homePageBtn).toBeTruthy();
   })
 
-  fit('should call on the router to set the habitId and filter appropriately', () => {
+  it('should call on the router to set the habitId and filter appropriately', () => {
     component.ngOnInit();
     expect(component.projectRecords?.length).toEqual(1);
   })

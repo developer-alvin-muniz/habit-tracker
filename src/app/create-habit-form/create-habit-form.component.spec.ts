@@ -11,7 +11,7 @@ import {FormsModule, NgModel, ReactiveFormsModule} from "@angular/forms";
 import {of} from "rxjs";
 import {HabitModel} from "../models/habit.model";
 
-fdescribe('CreateHabitFormComponent', () => {
+describe('CreateHabitFormComponent', () => {
   let component: CreateHabitFormComponent;
   let fixture: ComponentFixture<CreateHabitFormComponent>;
 

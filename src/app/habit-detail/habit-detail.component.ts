@@ -22,7 +22,6 @@ export class HabitDetailComponent implements OnInit {
   //  current month display as well as an array of dates displayed
   ngOnInit(): void {
     const habitId = this.routes.snapshot.paramMap.get('habitId');
-    console.log(habitId, 'THIS IS HABIT ID')
     this.routes.data.subscribe(
       (response: any) => {
         // this.routes.paramMap.
