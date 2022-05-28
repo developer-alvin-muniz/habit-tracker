@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {parseJsonSchemaToSubCommandDescription} from "@angular/cli/utilities/json-schema";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {User} from "../models/User";
 import {JwtInterceptor} from "../jwt.interceptor";
@@ -13,7 +12,6 @@ import {LoginRequestModel, LoginResponse} from "../models/login-request.model";
 export class UserService {
 
   userEvents = new BehaviorSubject<User | null>(null);
-
 
   constructor(private http: HttpClient, private httpInterceptor: JwtInterceptor) {
     this.retrieveUser();
@@ -34,7 +32,6 @@ export class UserService {
   }
 
   storeLoggedInUser(user: User) {
-    console.log(user, 'store logged in user');
     this.userEvents.next(user);
     this.httpInterceptor.setJwtToken(user.token);
     window.localStorage.setItem('rememberMe', JSON.stringify(user));
@@ -47,7 +44,6 @@ export class UserService {
       this.userEvents.next(user);
       this.httpInterceptor.setJwtToken(user.token);
     } else {
-      console.log(userString);
     }
   }
 

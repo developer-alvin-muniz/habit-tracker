@@ -1,6 +1,7 @@
 export interface HabitRecord {
+  name: string;
   id: number;
   habitId: number;
-  date: Date;
+  completionDate: Date;
   completed: boolean;
 }

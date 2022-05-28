@@ -1,6 +1,5 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {HabitModel} from "../models/habit.model";
-import {catchError, EMPTY} from "rxjs";
 import {HabitService} from "../shared/habit.service";
 
 @Component({

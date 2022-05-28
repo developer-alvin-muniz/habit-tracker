@@ -1,8 +1,5 @@
 
-<h1>Your progress this month</h1> <button id="home-page-btn"
-                                          routerLink="/habit-library"
->Back to
-  main page</button>
+<h1>Your progress this month</h1> <button id="home-page-btn" routerLink="/habit-library">Back to main page</button>
 
 <app-calendar [projectRecords]="projectRecords"
               (emitSelectedDate)="setSelectedDate($event)"></app-calendar>

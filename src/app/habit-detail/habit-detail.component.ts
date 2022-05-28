@@ -24,11 +24,9 @@ export class HabitDetailComponent implements OnInit {
     const habitId = this.routes.snapshot.paramMap.get('habitId');
     this.routes.data.subscribe(
       (response: any) => {
-        // this.routes.paramMap.
         this.projectRecords = response.projectRecords.filter(
           (record: HabitRecord) => record.habitId == Number(habitId)
         );
-        console.log(this.projectRecords)
       }
     )
   }

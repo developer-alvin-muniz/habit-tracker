@@ -2,29 +2,40 @@
              color="primary">
   <span>Habit Tracker</span>
 
-      <app-create-habit-form
-        (emitSavedHabit)= "refreshList($event)"></app-create-habit-form>
-          <a (click)="logout($event)" class="nav-item nav-link" role="button">
-            <span class="fa fa-power-off">LOG OUT</span>
-          </a>
+  <app-create-habit-form
+    (emitSavedHabit)="refreshList($event)"></app-create-habit-form>
+  <a (click)="logout($event)" class="nav-item nav-link" role="button">
+    <span class="fa fa-power-off">LOG OUT</span>
+  </a>
 
 </mat-toolbar>
 
 
-<div  *ngIf="habits$ | async as habits"
+<div *ngIf="habits$ | async as habits"
      style="display:
 flex;
 flex-direction:
 column; padding: 0 25%;">
   <h2>Todays Date: {{getCurrentDate() | date}}</h2>
-  <mat-card style="display: flex; justify-content: space-between; width: 100%;
-height: 35px;
-margin-top: 10px;margin-bottom:
-10px; color: white;
-background-color: rebeccapurple;" *ngFor="let habit of habits">{{habit.name}}
+  <div *ngFor="let habit of habits">
     <div>
-      <button (click)="postCompletedHabit(true, habit)">Yes</button>
-      <button (click)="postCompletedHabit(false, habit)">No</button>
+      <mat-form-field id="start-date-picker">
+        <input
+          (dateChange)="saveStartDate(habit, $event)"
+          name="start-date"
+          id="start-date-input"
+          matInput [matDatepicker]="picker"
+          [value]="habit.startDate"
+          placeholder="Choose a start date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
-  </mat-card>
+    <mat-card class="habit-accordion">{{habit.name}}
+      <div>
+        <button (click)="postCompletedHabit(true, habit)">Yes</button>
+        <button (click)="postCompletedHabit(false, habit)">No</button>
+      </div>
+    </mat-card>
+  </div>
 </div>

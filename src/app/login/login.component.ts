@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginForm: FormGroup;
   usernameCtrl: FormControl;
@@ -27,8 +27,6 @@ export class LoginComponent implements OnInit {
     )
   }
 
-  ngOnInit(): void {
-  }
 
   loginUser(): void {
     this.userService.loginUser(
@@ -53,18 +51,4 @@ export class LoginComponent implements OnInit {
         }
       );
   }
-
-  // authenticate() {
-  //   this.userService.login( this.usernameCtrl.value, this.passwordCtrl.value).subscribe(
-  //     response => {
-  //       console.log('login successful');
-  //       this.router.navigate(['/habit-detail']);
-  //     },
-  //     error => {
-  //       console.log('login unsuccessful');
-  //       // this.authenticationFailed = true;
-  //     }
-  //   );
-  // }
-
 }

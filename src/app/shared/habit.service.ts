@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, EMPTY, Observable, tap} from "rxjs";
+import {catchError, EMPTY, Observable, of, tap} from "rxjs";
 import {HabitRecord} from "../models/HabitRecord";
 import {Resolve} from "@angular/router";
 import {DatePipe} from "@angular/common";
@@ -30,7 +30,7 @@ export class HabitService implements Resolve<any> {
   }
 
   postCompletedHabit(habitRecord: HabitRecord): Observable<HabitRecord> {
-    return this.http.post<HabitRecord>(environment.mockApiEndpoint + '/habitRecord', habitRecord)
+    return this.http.post<HabitRecord>(environment.apiEndpoint + '/habits/entries/save', habitRecord)
   }
 
   saveHabit(habit: HabitModel): Observable<HabitModel> {
@@ -38,10 +38,10 @@ export class HabitService implements Resolve<any> {
   }
 
   getAllCompletedHabits(): Observable<HabitRecord[]> {
-    return this.http.get<HabitRecord[]>(environment.mockApiEndpoint + '/habitRecord');
+    return this.http.get<HabitRecord[]>(environment.apiEndpoint + '/habits/entries');
   }
 
-  postDates(projectRecord: HabitRecord):Observable<HabitRecord> {
-    return this.http.post<HabitRecord>(environment.mockApiEndpoint + '/dates', projectRecord);
+  saveStartDate(habit: HabitModel): Observable<HabitModel> {
+    return this.http.put<HabitModel>(environment.apiEndpoint + '/habits/save', habit);
   }
 }

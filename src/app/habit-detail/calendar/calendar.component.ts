@@ -21,7 +21,7 @@ export class CalendarComponent implements OnChanges {
   ngOnChanges(): void {
     this.projectRecords?.forEach(
       record => {
-        this.dateClass(record.date, 'month');
+        this.dateClass(record.completionDate, 'month');
       }
     )
   }
@@ -40,7 +40,7 @@ export class CalendarComponent implements OnChanges {
       const convertDate = datePipe.transform(cellDate,'MM-dd-YYYY') as string;
 
       let filteredRecords = this.projectRecords?.filter(projectRecord => {
-        const convert = datePipe.transform(projectRecord.date,'MM-dd-YYYY') as string;
+        const convert = datePipe.transform(projectRecord.completionDate,'MM-dd-YYYY') as string;
         return convert == convertDate;
       }) as HabitRecord[];
 

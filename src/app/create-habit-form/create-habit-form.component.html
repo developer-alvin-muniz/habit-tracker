@@ -1,7 +1,7 @@
 <form id="new-habit-form" (ngSubmit)="saveHabit()" #newHabitForm="ngForm">
   <label id="new-habit-label">Add New Habit</label>
   <input id="new-habit-input" required name="habitName" [(ngModel)]="newHabit"
-         style="width:195px; background-color: white;"
+         class="input-field-medium"
          #habitName="ngModel"
          matInput>
   <button id="save-habit-btn" type="submit" [disabled]="newHabitForm.invalid">Save</button>

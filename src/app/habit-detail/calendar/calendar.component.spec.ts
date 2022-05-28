@@ -30,7 +30,7 @@ describe('CalendarComponent', () => {
       component.projectRecords = [
         {
           completed: true,
-          date: testDate
+          completionDate: testDate
         } as HabitRecord
       ]
       let actual = component.dateClass(testDate, 'month');
@@ -39,7 +39,7 @@ describe('CalendarComponent', () => {
       component.projectRecords = [
         {
           completed: false,
-          date: testDate
+          completionDate: testDate
         } as HabitRecord
       ]
 
@@ -54,7 +54,7 @@ describe('CalendarComponent', () => {
       component.projectRecords = [
         {
           completed: true,
-          date: testDate
+          completionDate: testDate
         } as HabitRecord
       ]
       let actual = component.dateClass(missedDate, 'month');
@@ -89,7 +89,7 @@ describe('CalendarComponent', () => {
     component.projectRecords = [
       {
         completed: true,
-        date: testDate
+        completionDate: testDate
       } as HabitRecord
     ]
 

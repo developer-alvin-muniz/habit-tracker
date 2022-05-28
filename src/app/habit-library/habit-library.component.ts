@@ -20,8 +20,6 @@ import {UserService} from "../shared/user.service";
 })
 export class HabitLibraryComponent implements OnInit, OnDestroy{
 
-  // selectedHabit?: HabitModel;
-  selectedDate?: Date;
 
   newHabit: string | undefined;
 
@@ -47,7 +45,8 @@ export class HabitLibraryComponent implements OnInit, OnDestroy{
   }
 
   getCurrentDate() {
-    return new Date();
+    return new Date(2022,4,28);
+    // return new Date();
   }
 
   saveHabit() {
@@ -56,22 +55,21 @@ export class HabitLibraryComponent implements OnInit, OnDestroy{
     } as HabitModel
 
     this.habitService.saveHabit(savedHabit).subscribe(
-      () => {
-        console.log('habit saved')
+      (response) => {
+        console.log(response, 'saved');
       },
       ()=> {
-        console.log('habit not saved')
       }, ()=>{
-
       }
     )
   }
 
   postCompletedHabit(completed: boolean, habit: HabitModel) {
     const completedRecord = {
+      name: habit.name,
       completed: completed,
       habitId: habit?.id,
-      date: this.getCurrentDate()
+      completionDate: this.getCurrentDate()
     } as HabitRecord;
 
     this.habitService.postCompletedHabit(completedRecord).subscribe(
@@ -97,5 +95,16 @@ export class HabitLibraryComponent implements OnInit, OnDestroy{
         return EMPTY;
       })
     )
+  }
+
+  saveStartDate(habit: HabitModel, $event: any) {
+    if(!!$event.value) {
+      habit.startDate = $event.value
+      this.habitService.saveStartDate(habit)
+        .subscribe(habit => {
+          console.log('updated habit')
+        });
+    }
+
   }
 }
